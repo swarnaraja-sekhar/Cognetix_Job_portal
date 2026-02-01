@@ -20,7 +20,7 @@ const JobDetails = () => {
     useEffect(() => {
         const fetchJob = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/jobs/${id}`);
+                const { data } = await axios.get(`https://cognetix-job-portal.onrender.com/api/jobs/${id}`);
                 setJob(data);
             } catch (error) {
                 console.error(error);
@@ -53,7 +53,7 @@ const JobDetails = () => {
                     Authorization: `Bearer ${user.token}`
                 }
             };
-            await axios.post(`http://localhost:5000/api/apply/${id}`, formData, config);
+            await axios.post(`https://cognetix-job-portal.onrender.com/api/apply/${id}`, formData, config);
             setMessage('Application submitted successfully!');
             setResume(null);
             setCoverLetter('');

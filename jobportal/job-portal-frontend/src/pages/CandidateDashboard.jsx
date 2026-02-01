@@ -14,7 +14,7 @@ const CandidateDashboard = () => {
                 const config = {
                     headers: { Authorization: `Bearer ${user.token}` }
                 };
-                const { data } = await axios.get('http://localhost:5000/api/apply/my-applications', config);
+                const { data } = await axios.get('https://cognetix-job-portal.onrender.com/api/apply/my-applications', config);
                 setApplications(data);
             } catch (error) {
                 console.error(error);

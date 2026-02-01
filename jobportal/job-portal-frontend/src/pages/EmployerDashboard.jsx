@@ -13,7 +13,7 @@ const EmployerDashboard = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` }
             };
-            const { data } = await axios.get('http://localhost:5000/api/jobs/employer/myjobs', config);
+            const { data } = await axios.get('https://cognetix-job-portal.onrender.com/api/jobs/employer/myjobs', config);
             setJobs(data);
         } catch (error) {
             console.error("Error fetching jobs", error);
@@ -30,7 +30,7 @@ const EmployerDashboard = () => {
         if (!window.confirm('Are you sure?')) return;
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.delete(`http://localhost:5000/api/jobs/delete/${id}`, config);
+            await axios.delete(`https://cognetix-job-portal.onrender.com/api/jobs/delete/${id}`, config);
             fetchJobs(); // Refresh
         } catch (error) {
             alert('Failed to delete');

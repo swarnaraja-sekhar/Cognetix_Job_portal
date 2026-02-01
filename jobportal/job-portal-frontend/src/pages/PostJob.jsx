@@ -36,7 +36,7 @@ const PostJob = () => {
                 skills: formData.skills.split(',').map(skill => skill.trim()),
             };
 
-            await axios.post('http://localhost:5000/api/jobs/create', jobData, config);
+            await axios.post('https://cognetix-job-portal.onrender.com/api/jobs/create', jobData, config);
             navigate('/dashboard');
         } catch (err) {
             setError(err.response?.data?.message || 'Something went wrong');

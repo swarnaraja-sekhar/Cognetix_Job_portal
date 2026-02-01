@@ -12,7 +12,7 @@ const AdminDashboard = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` }
             };
-            const { data } = await axios.get('http://localhost:5000/api/admin/jobs/pending', config);
+            const { data } = await axios.get('https://cognetix-job-portal.onrender.com/api/admin/jobs/pending', config);
             setJobs(data);
         } catch (error) {
             console.error("Error fetching jobs", error);
@@ -29,7 +29,7 @@ const AdminDashboard = () => {
         // action: 'approve' or 'reject'
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(`http://localhost:5000/api/admin/job/${action}/${id}`, {}, config);
+            await axios.put(`https://cognetix-job-portal.onrender.com/api/admin/job/${action}/${id}`, {}, config);
             // Remove from list
             setJobs(jobs.filter(job => job._id !== id));
         } catch (error) {

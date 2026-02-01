@@ -15,7 +15,7 @@ const JobListing = () => {
         setLoading(true);
         try {
             const query = new URLSearchParams(filters).toString();
-            const { data } = await axios.get(`http://localhost:5000/api/jobs/all?${query}`);
+            const { data } = await axios.get(`https://cognetix-job-portal.onrender.com/api/jobs/all?${query}`);
             setJobs(data);
         } catch (error) {
             console.error(error);

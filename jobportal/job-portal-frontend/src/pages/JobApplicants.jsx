@@ -15,7 +15,7 @@ const JobApplicants = () => {
                 const config = {
                     headers: { Authorization: `Bearer ${user.token}` }
                 };
-                const { data } = await axios.get(`http://localhost:5000/api/apply/job/${id}`, config);
+                const { data } = await axios.get(`https://cognetix-job-portal.onrender.com/api/apply/job/${id}`, config);
                 setApplicants(data);
             } catch (error) {
                 console.error(error);
@@ -41,7 +41,7 @@ const JobApplicants = () => {
                                     {app.coverLetter && <p className="text-sm mt-1" style={{ background: '#f8fafc', padding: '0.5rem', borderRadius: '4px' }}>"{app.coverLetter}"</p>}
                                 </div>
                                 <div className="flex gap-2 items-center">
-                                    <a href={`http://localhost:5000/${app.resume}`} target="_blank" rel="noreferrer" className="btn btn-outline" style={{ padding: '0.25rem 0.5rem', fontSize: '0.9rem' }}>View Resume</a>
+                                    <a href={`https://cognetix-job-portal.onrender.com/${app.resume}`} target="_blank" rel="noreferrer" className="btn btn-outline" style={{ padding: '0.25rem 0.5rem', fontSize: '0.9rem' }}>View Resume</a>
                                     <span className={`badge ${app.status === 'accepted' ? 'badge-success' : app.status === 'rejected' ? 'badge-danger' : 'badge-pending'}`}>
                                         {app.status}
                                     </span>
