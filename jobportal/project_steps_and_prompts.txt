@@ -1,0 +1,62 @@
+Job Portal System - Implementation Steps & Prompts
+Stack Selected: MERN (MongoDB, Express, React, Node.js)
+
+STEP 1: Backend Initialization & Database Connection
+Description: Set up the Node.js project, install dependencies (express, mongoose, dotenv, cors, etc.), and connect to MongoDB.
+Prompt:
+"Initialize a new Node.js backend project in a folder named 'job-portal-backend'. Install necessary dependencies: express, mongoose, dotenv, cors, jsonwebtoken, bcryptjs, and multer. Set up the basic Express server structure in 'index.js' (or 'server.js') and create a 'config/db.js' file to connect to a local MongoDB (or Atlas) database using Mongoose. Ensure the server runs on port 5000 and logs a success message upon database connection."
+
+STEP 2: User Authentication & Role Schema
+Description: Create the User model and authentication routes (Register, Login) with JWT generation and role validation.
+Prompt:
+"Create a User schema in 'models/User.js' with fields: name, email, password, role (enum: ['admin', 'employer', 'candidate']), and createdAt. Implement auth routes in 'routes/authRoutes.js' for registration and login. Use bcryptjs to hash passwords and jsonwebtoken to generate signed tokens upon login. Create a middleware 'middleware/authMiddleware.js' to verify tokens and authorized roles."
+
+STEP 3: Job Management APIs (Employer)
+Description: Create the Job model and CRUD endpoints for Employers to manage job postings.
+Prompt:
+"Create a Job schema in 'models/Job.js' containing: title, description, company, salary, location, category, skills (array), experienceLevel, status (default: 'pending'), employer (reference to User), and createdAt. Implement job routes in 'routes/jobRoutes.js' enabling Employers to Post (Create), Edit (Update), and Delete jobs. Also add a route to Get jobs posted by the specific employer. Ensure only users with the 'employer' role can perform write operations."
+
+STEP 4: Application System & File Upload
+Description: Create the Application model and endpoints for candidates to apply, including resume upload handling.
+Prompt:
+"Create an Application schema in 'models/Application.js' linking a Candidate (User) to a Job. Fields should include: resume (URL/path), coverLetter, status (pending/accepted/rejected). Implement a route 'POST /apply/:jobId' for Candidates to apply. Use 'multer' to handle PDF resume uploads, saving files to a '/uploads' directory. Update the path in the database accordingly."
+
+STEP 5: Admin & Public Access APIs
+Description: Admin approval endpoints and public job fetching APIs.
+Prompt:
+"Implement Admin-only routes in 'routes/adminRoutes.js' to: 1) Approve/Reject job postings (updating Job status), and 2) View/Approve/Reject candidate applications if necessary (or allow employers to do this). Create public routes for Candidates to fetch all 'approved' and 'active' jobs with filtering capabilities (by category, location, skills)."
+
+STEP 6: Frontend Initialization & Styling Setup
+Description: Initialize the React app and set up the design system (Tailwind or Custom CSS).
+Prompt:
+"Initialize a React application in a folder named 'job-portal-frontend' using Vite or CRA. Install 'react-router-dom', 'axios', and 'react-icons'. Set up a modern, premium design system. If using CSS, create a 'index.css' with a rich color palette (gradients, glassmorphism), modern typography (e.g., Inter/Google Fonts), and global styles for buttons and cards. Configure the main router structure."
+
+STEP 7: Authentication UI (Login/Register)
+Description: Build the frontend pages for user registration and login.
+Prompt:
+"Create 'Login.jsx' and 'Register.jsx' pages. The Register page must allow the user to select their role (Candidate or Employer). Use sleek forms with validation. Integrate these forms with the backend Auth APIs using Axios. upon success, store the JWT token in localStorage and redirect the user based on their role."
+
+STEP 8: Dashboard Layouts & Role-Based Routing
+Description: Create layouts and protected routes for different user roles.
+Prompt:
+"Implement ProtectedRoute components to restrict access based on roles. Create distinct layouts/dashboards: 'CandidateDashboard', 'EmployerDashboard', and 'AdminDashboard'. The UI should be responsive and feature a side or top navigation bar customized for each role (e.g., Employers see 'Post Job', Candidates see 'My Applications')."
+
+STEP 9: Employer Dashboard & Job Posting
+Description: UI for employers to post and manage jobs.
+Prompt:
+"Build the Employer Dashboard. detailed 'Create Job' form with fields for title, description, salary, etc. Display a list/table of jobs posted by the current employer with options to Edit or Delete. Show the status (Pending/Approved) of each job clearly."
+
+STEP 10: Candidate Job Browsing & Application
+Description: Job feed and application flow for candidates.
+Prompt:
+"Create the Job Listing page for Candidates. Display approved jobs in attractive cards with search and filter inputs (Location, Category). logical 'Job Details' page. Implement an 'Apply Now' modal or section where the candidate can upload a resume and submit a cover letter. Integrate with the backend upload API."
+
+STEP 11: Admin Dashboard & Approvals
+Description: Admin interface to moderate jobs and platform activity.
+Prompt:
+"Build the Admin Dashboard. Include a section to view all 'Pending' job posts. specific actions to 'Approve' or 'Reject' these postings. Optionally, add a view for User management or Analytics (total jobs, total applications)."
+
+STEP 12: Application Tracking & Management
+Description: Views for Candidates to see their application status and Employers to see applicants.
+Prompt:
+"Create a 'My Applications' page for Candidates to track the status of applied jobs. For Employers, add an 'Applicants' view for each job where they can download resumes and update application status (e.g., Shortlist/Reject)."
